@@ -27,7 +27,7 @@ module Ethereum
       mether:     1000000000000000000000000,
       gether:     1000000000000000000000000000,
       tether:     1000000000000000000000000000000
-    }
+    }.freeze
 
     def valid_address?(address_string)
       address = address_string.gsub(/^0x/,'')
@@ -100,7 +100,7 @@ module Ethereum
 
     def to_int(hexstring)
       return nil if hexstring.nil?
-      (hexstring.gsub(/^0x/,'')[0..1] == "ff") ? (hexstring.hex - (2 ** 256)) : hexstring.hex
+      hexstring.hex
     end
 
     def get_base_type(typename)
